@@ -1,0 +1,19 @@
+{%extends "trackuser/base.html"%}
+
+
+{%block content%}
+
+<h1> User List </h1>
+
+  
+  <ul>
+    {% for user in data %}
+        {{user.email}}&nbsp;&nbsp;&nbsp;&nbsp;{{user.username}} &nbsp;&nbsp;&nbsp;&nbsp;{{user.password}}<br>
+    {% endfor %}
+  </ul>
+  
+
+
+{% endblock %}
+
+

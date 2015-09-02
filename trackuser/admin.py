@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import createuser
+from trackuser.models import Create
 
+
+
+class NewUsers(admin.ModelAdmin):
+	display_list = ['username','password']
+
+	class Meta:
+		model = Create
 # Register your models here.
-admin.site.register(createuser)
+admin.site.register(Create,NewUsers)
