@@ -7,6 +7,8 @@ from trackuser.models import Create,Profile
 
 
 # Create your views here.
+def home(request):
+    return render(request,'trackuser/base.html',{})
 
 
 def register(request):
@@ -46,8 +48,6 @@ def userlist(request):
 
     return render(request,'trackuser/users.html', {'data': data})
 
-def home(request):
-    return render(request,'trackuser/base.html',{})
 
 
 def login(request):
@@ -100,7 +100,7 @@ def profile(request):
             except:
                 b = Profile(user=a)
                 b.save()
-                b.Profile.objects.get(user=a)
+                b = Profile.objects.get(user=a)
 
             form = ProfileForm(request.POST,instance=b)
 
@@ -132,4 +132,20 @@ def profile(request):
     else:
         # If the request was not a POST, display the form to enter details.
         return HttpResponseRedirect('/login/')
+
+
+
+def profile_view(request):   
+    if request.session['username']:
+        a = Create.objects.get(username=request.session['username'])
+        try:
+            b=Profile.objects.get(user=a)
+        except:
+            b=Profile(user=a)
+            b.save()
+            b=Profile.objects.get(user=a)
+        return render(request,'trackuser/profile_view.html', {'profile':b})
+    else:
+        return HttpResponseRedirect('/login/')
+
 
