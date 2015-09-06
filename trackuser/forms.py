@@ -1,5 +1,5 @@
 from django import forms
-from trackuser.models import Create,Profile
+from trackuser.models import Create,Profile,Post
 
 
 
@@ -19,6 +19,11 @@ class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['full_name','address','phone_number']
+
+class PostForm(forms.ModelForm):
+	class Meta:
+		model = Post
+		fields = ['title','text']
 
 
 
