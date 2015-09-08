@@ -62,7 +62,7 @@ def login(request):
     
 
     if request.method == 'POST':
-        #print (request.POST)
+        #print (request.POST) //For printing the data in command line
         form =LoginForm(request.POST)
         if form.is_valid():
             try:

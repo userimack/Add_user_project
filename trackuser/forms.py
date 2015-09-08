@@ -20,10 +20,6 @@ class ProfileForm(forms.ModelForm):
 		model = Profile
 		fields = ['full_name','address','phone_number']
 
-class PostForm(forms.ModelForm):
-	class Meta:
-		model = Post
-		fields = ['title','text']
 
 
 
